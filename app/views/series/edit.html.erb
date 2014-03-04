@@ -1,0 +1,10 @@
+<%= render 'prepagecontent' %>			
+<!-- ============================================== -->	
+<h1>Edit series</h1>
+ 
+<%= render 'form' %>
+
+<%= link_to 'Delete Series', series_path(@series), method: :delete, data: { confirm: 'Are you sure?' } %> |  
+<%= link_to 'Back to Series', series_path %>
+<!-- ============================================== -->
+<%= render 'postpagecontent' %>

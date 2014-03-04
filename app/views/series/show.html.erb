@@ -1,0 +1,24 @@
+<%= render 'prepagecontent' %>			
+<!-- ============================================== -->	
+<p>
+  <h1><%= @series.title %></h1>
+</p>
+ 
+<p>
+  <strong>Description:</strong>
+  <%= @series.text %>
+</p>
+ 
+<h2>Events</h2>
+<%= render @series.events %>
+ 
+<div style="border-top: 1px solid grey;">
+	<h2>Add a new event:</h2>
+	<%= render "events/form" %>
+</div>
+ 
+<%= link_to 'Edit Series', edit_series_path(@series) %> |
+<%= link_to 'Delete Series', series_path(@series), method: :delete, data: { confirm: 'Are you sure?' } %> | 
+<%= link_to 'Back to Series List', controller: "series" %>
+<!-- ============================================== -->
+<%= render 'postpagecontent' %>

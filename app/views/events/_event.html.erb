@@ -1,0 +1,35 @@
+
+<div style="border-top: 1px solid grey;">
+
+<p>
+  <strong>Date:</strong>
+  <%= event.date %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= event.category %>
+</p>
+
+<p>
+  <strong>Event Title:</strong>
+  <%= event.title %>
+</p>
+ 
+<p>
+  <strong>Event Description:</strong>
+  <%= event.description %>
+</p>
+
+<p>
+  <strong>Event Location:</strong>
+  <%= event.location %>
+</p>
+ 
+<p>
+  <%= link_to 'Delete Event', [event.series, event],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+</p>
+
+</div>
