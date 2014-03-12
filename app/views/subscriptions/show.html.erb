@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @subscription.username %>
+</p>
+
+<p>
+  <strong>Series Subscribed To:</strong>
+</p>
+<p>
+	<!-- SOURCE: http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html#label-Delete+or+destroy%3F   -->
+	<div class="NewsWrapper">
+		<% @subscription.series.each do |series| %>
+			<div class="NewsColumn">
+				<div class="removeButton"><%= link_to 'x', "/subscriptions/#{@subscription.id}/series/#{series.id}", method: :delete, data: { confirm: 'Are you sure?' } %></div> <!-- /subscriptions/#{@subscription.id}/series/#{series.id} --> <!-- /series/#{series.id}/subscription/#{@subscription.id} -->
+				<strong><%= series.title %></strong>
+				<br>
+				<%= series.text %>
+				<!--<div class="DividerLineHorizontal"></div>
+				<strong>Events</strong>-->
+				<%= render series.events %>
+				<div class="DividerLineHorizontal"></div>
+				<%= link_to 'Show', series %> | 
+				<%= link_to 'Edit', edit_series_path(series) %> | 
+				<%= link_to 'Destroy', series, method: :delete, data: { confirm: 'Are you sure?' } %>
+			</div>
+		<% end %>
+	</div>
+</p>
+
+<%= link_to 'Edit', edit_subscription_path(@subscription) %> |
+<%= link_to 'Back', subscriptions_path %>

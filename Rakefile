@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-CisPortal::Application.load_tasks
+Subscriptionapp::Application.load_tasks

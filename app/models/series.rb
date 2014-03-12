@@ -1,7 +1,8 @@
 class Series < ActiveRecord::Base
-  has_many :events, dependent: :destroy
-  validates :title, presence: true,
-                    length: { minimum: 2 }
-  validates :text, presence: true,
-                    length: { minimum: 1, maximum: 256 }
+	has_and_belongs_to_many :subscriptions
+	has_many :events
+	
+	#def unsubscribe=(value)
+	#  self.subscriptions.delete << Subscription.find(value)
+    #end
 end

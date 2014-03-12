@@ -3,9 +3,11 @@
 
 <div style="border-top: 1px solid grey;">
 
+<!-- render @event %>--> <!-- MORE EFFICIENT -->
+
 <p>
   <strong>Date:</strong>
-  <%= @event.date %>
+  <%= @event.date.strftime("%m/%d/%Y - %l:%M%P") %>
 </p>
 
 <p>

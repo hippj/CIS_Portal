@@ -1,13 +1,15 @@
-CisPortal::Application.routes.draw do
-  get "welcome/index"
-  
-  resources :usersubscriptions
+Subscriptionapp::Application.routes.draw do
+  resources :events
+
   resources :series do
 	resources :events
   end
-#  root to: "series#index"
-  root to: "usersubscriptions#index"
+  resources :subscriptions
   
+  # delete 'series/:id/subscription/:subscription_id' => 'series#unsubscribe'
+  delete 'subscriptions/:id/series/:series_id' => 'subscriptions#unsubscribe'
+  root 'subscriptions#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

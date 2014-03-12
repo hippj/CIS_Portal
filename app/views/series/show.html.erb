@@ -1,34 +1,37 @@
-<!-- render 'prepagecontent' -->
-<!-- ============================================== -->	
+<p id="notice"><%= notice %></p>
+
 <p>
-  <h1><%= @series.title %></h1>
+  <!--<strong>Series:</strong>-->
+  <strong><%= @series.title %></strong>
 </p>
- 
+
 <p>
-  <strong>Description:</strong>
+  <!--<strong>Description:</strong>-->
   <%= @series.text %>
 </p>
- 
-<h2>Events</h2>
+
+<div style="border-top: 1px solid grey;"></div>
+<strong>Events</strong>
 <%= render @series.events %>
- 
-<div style="border-top: 1px solid grey;">
-	<!-- render "events/form" -->
-	<div class="teamH_buttonStyle">
-		<%= link_to 'Add a New Event', new_series_event_path(@series) %>
-	</div>
-	<br>
-</div>
 
-<br> 
-<div style="border-top: 1px solid grey;">
-	<%= link_to 'Edit Series', edit_series_path(@series) %> |
-	<%= link_to 'Delete Series', series_path(@series), method: :delete, data: { confirm: 'Are you sure?' } %>
-</div>
-<br>
-<div style="border-top: 1px solid grey;">
-	<%= link_to 'Back to Series List', controller: "series" %>
-</div>
+<div style="border-top: 1px solid grey;"></div>
+<%= link_to 'Add a New Event', new_series_event_path(@series) %>
+<div style="border-top: 1px solid grey;"></div>
 
-<!-- ============================================== -->
-<!-- render 'postpagecontent' -->
+<p>
+	<table style="border: 1px solid grey;">
+		<tbody>
+			<th style="border-bottom: 1px solid grey;">
+				<strong>Subscribers:</strong>
+			</th>
+			<% @series.subscriptions.each do |subscription| %>
+				<tr>
+					<td><%= subscription.username %></td>
+				</tr>
+			<% end %>
+		<tbody>
+	</table>
+</p>
+
+<%= link_to 'Edit', edit_series_path(@series) %> |
+<%= link_to 'Back', series_index_path %>

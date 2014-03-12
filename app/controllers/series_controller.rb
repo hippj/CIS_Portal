@@ -1,60 +1,87 @@
 class SeriesController < ApplicationController
-	
-	http_basic_authenticate_with name: "admin", password: "password", except: [:index, :show]
-	
-	def new
-		@series = Series.new
-	end
+  before_action :set_series, only: [:show, :edit, :update, :destroy]
+
+  # GET /series
+  # GET /series.json
+  def index
+    @series = Series.all
+  end
+
+  # GET /series/1
+  # GET /series/1.json
+  def show
+  end
+
+  # GET /series/new
+  def new
+    @series = Series.new
+  end
+
+  # GET /series/1/edit
+  def edit
+  end
+
+  # POST /series
+  # POST /series.json
+  def create
+    @series = Series.new(series_params)
+
+    respond_to do |format|
+      if @series.save
+        format.html { redirect_to @series, notice: 'Series was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @series }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @series.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /series/1
+  # PATCH/PUT /series/1.json
+  def update
+    respond_to do |format|
+      if @series.update(series_params)
+        format.html { redirect_to @series, notice: 'Series was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @series.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /series/1
+  # DELETE /series/1.json
+  def destroy
+    @series.destroy
+    respond_to do |format|
+      format.html { redirect_to series_index_url }
+      format.json { head :no_content }
+    end
+  end
   
-	def show
-		@series = Series.find(params[:id])
-	end
-	
-	def index
-		@series = Series.all
-	end
- 
-	def create
-#		render text: params[:series].inspect
-		@series = Series.new(params[:series].permit(:title, :text))
- 		if @series.save
-			redirect_to @series
-		else
-			render 'new'
-		end
-	end
-	
-	def edit
-		@series = Series.find(params[:id])
-	end
-	
-	def update
-		@series = Series.find(params[:id])
-		
-		if @series.update(params[:series].permit(:title, :text))
-			redirect_to @series
-		else
-			render 'edit'
-		end
-	end
-	
-	def destroy
-		@series = Series.find(params[:id])
-		@series.destroy
- 
-		#redirect_to series_path
-		redirect_to controller: "series" 
-	end
-	
-	#def addEvent
-	#	redirect_to controller: "events"
-	#	#@series = Series.find(params[:id])
-	#	#@series.events.create(params[:event].permit(:date, :category, :title, :description, :location))
-	#end
-	
-	private
-		def series_params
-			params.require(:series).permit(:title, :text)
-		end
-	
+    # SOURCE:  http://neyric.com/2007/07/08/how-to-delete-a-many-to-many-association-with-rails/
+  # DELETE /series/1/Subscription/2
+  def unsubscribe
+     subscription = Subscription.find(params[:subscription_id])
+     series = subscription.series.find(params[:id])
+
+     if series
+        subscription.series.delete(series)
+		subscription.save
+     end
+	 redirect_to subscription
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_series
+      @series = Series.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def series_params
+      params.require(:series).permit(:title, :text)
+    end
 end

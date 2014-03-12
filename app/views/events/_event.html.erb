@@ -10,30 +10,28 @@
 <!-- <a class="teamH_NonFancyLink" href="<!-- series_event_path(event.series, event) %>"> -->
 <div style="border-top: 1px solid grey;">
 
-<p>
-  <strong>Date:</strong>
-  <%= event.date %>
-</p>
+  <!--<strong>Date:</strong>-->
+  <h3><%= event.date.strftime("%m/%d/%Y - %l:%M%P") %></h3>
 
-<p>
-  <strong>Category:</strong>
-  <%= event.category %>
-</p>
-
-<p>
-  <strong>Event Title:</strong>
+  <!--<strong>Category:</strong>-->
+  <strong><%= event.category %></strong>
+  
+  <br>
+  
+  <!--<strong>Event Title:</strong>-->
   <%= event.title %>
-</p>
- 
-<p>
-  <strong>Event Description:</strong>
-  <%= event.description %>
-</p>
 
-<p>
-  <strong>Event Location:</strong>
-  <%= event.location %>
-</p>
+  <br>
+  
+  <!--<strong>Event Location:</strong>-->
+  <strong><%= event.location %></strong>
+
+<!--<p>-->
+  <!--<strong>Event Description:</strong>-->
+  <!-- event.description %>-->
+<!--</p>-->
+
+
 <!--</a>-->
 
 <p>

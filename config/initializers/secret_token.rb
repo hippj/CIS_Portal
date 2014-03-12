@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-CisPortal::Application.config.secret_key_base = '34c74f73454ff49d1cdd4216cf3705e2dace639ec7f5b4e2cda1f37bf9c82eb8dfe19dd86b194251e1b34ba3223d539e4d9c59efc59ad5416e5d42904e9bcbb7'
+Subscriptionapp::Application.config.secret_key_base = 'c43121f88018bcf76c2cab17bc0280c862c0d5f09081ce13a6de802fffc4b230ce5d1e7787e706aa20e7c85f098269c8980c16d2025c6601c38462a6560171c1'

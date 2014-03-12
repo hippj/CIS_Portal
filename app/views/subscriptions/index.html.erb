@@ -1,0 +1,49 @@
+<h1>Listing subscriptions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Series Subscribed To</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+	<tr><td colspan="3"><div class="DividerLineHorizontal"></div></td></tr>
+	<% @subscriptions.each do |subscription| %>
+     	<tr>
+	        <td>
+			<%= subscription.username %>
+		 </td>
+       	 <td>
+			<!-- subscription.series %>-->
+			
+			<table class="subscriptionIndexList">
+				<% subscription.series.each do |series| %>			
+				<tr>
+					<td><%= series.title %></td>
+					<td><%= series.text %></td>
+					<td style="text-align: right;"><%= link_to 'Show', series %></td>
+				</tr>
+				<% end %>
+			</table>
+			
+		 </td>
+	        <td>
+			<%= link_to 'Show', subscription %> | 
+			<%= link_to 'Edit', edit_subscription_path(subscription) %> | 
+			<%= link_to 'Destroy', subscription, method: :delete, data: { confirm: 'Are you sure?' } %>
+		</td>
+	</tr>
+	<tr><td colspan="3"><div class="DividerLineHorizontal"></div></td></tr>
+    	<% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Subscription', new_subscription_path %>
+
+<br>
+<%= link_to 'Go to Series', series_index_path %>

@@ -1,0 +1,39 @@
+<%= form_for(@subscription) do |f| %>
+  <% if @subscription.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
+
+      <ul>
+      <% @subscription.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :username %><br>
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :series_id %><br>
+    <!-- f.text_field :series_id %>-->
+	
+	<!-- select(:person, :city_id, [['Lisbon', 1], ['Madrid', 2]]) %>-->
+	
+	<!-- 
+		SOURCE:  http://stackoverflow.com/questions/2880444/rails-link-from-one-model-to-another-based-on-db-field 
+	-->
+	<!-- f.select :series_id, Series.all.collect {|a| [a.title, a.id]} %>-->
+	<%= f.select :series_id, Series.all.collect {|a| [a.title, a.id]} %>
+	
+	<!--
+		SOURCE:  http://stackoverflow.com/questions/14113057/how-to-have-a-drop-down-select-field-in-a-rails-form
+	-->
+	<!-- f.collection_select :series_id, Series.order(:title),:id,:title, include_blank: true -%>-->
+	
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,64 @@
+// Place all the styles related to the Subscriptions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.NewsWrapper
+{
+	display: inline-block;
+	width: 100%;
+	border: 0px dashed grey;
+}
+
+.NewsColumn
+{
+	display: inline-block;
+	width: 300px;
+	/* height: 150px; */
+	float: left;
+	position: relative;
+	padding: 5px;
+	border: 3px solid black;
+	margin-left: -3px;
+	margin-top: -3px;
+}
+
+.DividerLineHorizontal
+{
+	width: 100%;
+	border-top: 1px solid grey;
+}
+
+.removeButton
+{
+	width: 10px;
+	height: 10px;
+	float: right;
+	border: 1px solid grey;
+	background-color: red;
+}
+.removeButton a
+{
+	width: 100%;
+	height: 100%;
+	color: grey;
+	text-decoration: none;
+	
+	position: relative;
+	top: -6px;
+	left: 1px;
+}
+
+.subscriptionIndexList
+{
+	border-left: 1px solid grey;
+	border-right: 1px solid grey;
+	width: 100%;
+}
+
+/*
+th, td
+{
+	text-align: left;
+	padding-right: 20px;
+}
+*/
