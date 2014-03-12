@@ -1,0 +1,13 @@
+<!-- render 'prepagecontent' -->
+<!-- ============================================== -->	
+<h1>New Event</h1>
+ 
+<%= render 'form' %>
+ 
+<!-- link_to 'Cancel',  @event.series %> -->
+<div style="border-top: 1px solid grey;">
+	<%= link_to 'Back to Series',  @event.series %> | 
+	<%= link_to 'Back to Series List', controller: "series" %>
+</div>
+<!-- ============================================== -->
+<!-- render 'postpagecontent' -->

@@ -1,4 +1,13 @@
+<style>
+	.teamH_NonFancyLink
+	{
+		text-decoration: none;
+		color: #000000;
+	}
+</style>
 
+
+<!-- <a class="teamH_NonFancyLink" href="<!-- series_event_path(event.series, event) %>"> -->
 <div style="border-top: 1px solid grey;">
 
 <p>
@@ -25,10 +34,13 @@
   <strong>Event Location:</strong>
   <%= event.location %>
 </p>
- 
+<!--</a>-->
+
 <p>
-  <%= link_to 'Delete Event', [event.series, event],
-               method: :delete,
+		<%= link_to 'Show Event', [event.series, event] %> | 
+		<%= link_to 'Edit Event', edit_series_event_path(event.series, event) %> | <!-- @series == event.series -->
+		<%= link_to 'Delete Event', [event.series, event],
+			   method: :delete,
                data: { confirm: 'Are you sure?' } %>
 </p>
 

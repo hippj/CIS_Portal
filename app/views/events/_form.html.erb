@@ -1,5 +1,35 @@
-<%= form_for([@series, @series.events.build]) do |f| %>
-  <% if @series.errors.any? %>
+<style>
+	
+	.teamH_buttonStyle a, .teamH_buttonStyle input
+	{
+		color:#fff;
+		font-weight:bold;
+		border:1px solid #512888;
+		width:auto;
+		cursor:pointer;
+		padding:4px 10px;
+		-webkit-border-radius:3px;
+		-moz-border-radius:3px;
+		border-radius:3px;
+		background-color:#512888;
+		background-image:-webkit-gradient(linear,left top,left bottom,from(#7346aa),to(#512888));
+		background-image:-webkit-linear-gradient(top,#7346aa,#512888);
+		background-image:-moz-linear-gradient(top,#7346aa,#512888);
+		background-image:-ms-linear-gradient(top,#7346aa,#512888);
+		background-image:-o-linear-gradient(top,#7346aa,#512888);
+		background-image:linear-gradient(top,#7346aa,#512888);
+		text-decoration: none;
+	}
+	.teamH_buttonStyle a:hover
+	{
+		text-decoration: none;
+	}
+	
+</style>
+
+
+<%= form_for([@event.series, @event]) do |f| %>
+  <% if @event.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@series.errors.count, "error") %> prohibited
       this series from being saved:</h2>
@@ -32,6 +62,12 @@
     <%= f.text_field :location %>
   </p>
   <p>
-    <%= f.submit %>
+	<div class="teamH_buttonStyle">
+		<%= f.submit %> | 
+		<!-- link_to 'Delete Event', [@event.series, @event],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %> | -->
+		<%= link_to 'Cancel',  @event.series %>
+	</div>
   </p>
 <% end %>

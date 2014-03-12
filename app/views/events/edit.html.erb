@@ -1,0 +1,25 @@
+<!-- render 'prepagecontent' -->
+<!-- ============================================== -->	
+<h1>Edit Event</h1>
+ 
+<%= render 'form' %>
+
+<!-- link_to 'Back to Event', [@event.series, @event] %> -->
+<!-- link_to 'Delete Event', [@event.series, @event],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %> -->
+			   
+
+	<p>
+		<%= link_to 'Delete Event', [@event.series, @event],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+	</p>
+
+
+<div style="border-top: 1px solid grey;">
+	<%= link_to 'Back to Series',  @event.series %> | 
+	<%= link_to 'Back to Series List', controller: "series" %>
+</div>
+<!-- ============================================== -->
+<!-- render 'postpagecontent' -->

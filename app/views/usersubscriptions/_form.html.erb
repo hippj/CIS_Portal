@@ -1,0 +1,45 @@
+<%= form_for(@usersubscription) do |f| %>
+  <% if @usersubscription.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@usersubscriptions.errors.count, "error") %> prohibited
+      this subscription from being saved:</h2>
+    <ul>
+    <% @usersubscription.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  
+  <p>
+    <%= f.label :username %><br>
+    <%= f.text_field :username %>
+  </p>
+ 
+  <p>
+	<!--
+		TUTORIAL:  http://guides.rubyonrails.org/form_helpers.html
+	-->
+    <%= f.label "Select Series to Subscribe To: " %><br>
+    <!-- f.text_field :series %>-->
+	<!-- f.select( "title", "id", Series.all {|a| [a.title]}) -%> -->
+	<!-- select( "payment", "id", { "Visa" => "1", "Mastercard" => "2"}) %>-->
+	<!-- f.select(:series_id, Series.all {|a| [a.title]}) -%> -->
+	<!-- Series.find(params[:series_id]) -->
+	<!-- f.select(:series_id, { "1" => "1", "2" => "2", "3" => "3"}) -%>-->
+	<!-- f.select(:series_id, @").title.series_id %>-->
+	<!-- f.select(:series_id, Series.all {|a| [a.title]}) -%>-->
+	<!-- 
+		SOURCE:  http://stackoverflow.com/questions/2880444/rails-link-from-one-model-to-another-based-on-db-field 
+	-->
+	<%= f.select :series_id, Series.all.collect {|a| [a.title, a.id]} %>
+  </p>
+  
+
+  <p>
+	<span class="teamH_buttonStyle">
+		<%= f.submit %>
+		<%= link_to 'Cancel', controller: "usersubscriptions" %>
+	</span>
+  </p>
+<% end %>

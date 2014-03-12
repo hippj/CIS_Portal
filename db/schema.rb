@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140227161226) do
+ActiveRecord::Schema.define(version: 20140307235526) do
 
   create_table "events", force: true do |t|
     t.string   "title"
@@ -32,5 +32,23 @@ ActiveRecord::Schema.define(version: 20140227161226) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "user_subscriptions", force: true do |t|
+    t.string   "username"
+    t.integer  "subscriptions_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_subscriptions", ["subscriptions_id"], name: "index_user_subscriptions_on_subscriptions_id"
+
+  create_table "usersubscriptions", force: true do |t|
+    t.string   "username"
+    t.integer  "series_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "usersubscriptions", ["series_id"], name: "index_usersubscriptions_on_series_id"
 
 end

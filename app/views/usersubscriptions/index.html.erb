@@ -60,30 +60,30 @@
 	
 </style>
 
+<h1>Users</h1>
+
 <table class="teamH_grouptable">
   <tr>
 	<th class="leftcolumnclass">Series</th>
     <th>Description</th>
   </tr>
  
-<% @series.each do |series| %>
+<% @usersubscription.each do |usersubscription| %>
   <tr>
-	<td class="leftcolumnclass"><%= link_to series.title, series_path(series) %></td>
-    <td><%= series.text %></td>
+	<td class="leftcolumnclass"><%= link_to usersubscription.username, usersubscription_path(usersubscription) %></td>
+    <td><!-- @usersubscription.username %>--></td>
   </tr>
 <% end %>
   <!--<tr><td></td><td></td></tr>-->
 </table>
 
 <div class="teamH_buttonStyle">
-	<%= link_to 'Create New Series', new_series_path %>
+	<%= link_to 'Create New User Subscription', new_usersubscription_path %>
 </div>
-
 <br>
 <br>
 <div style="border-top: 1px solid grey;">
-	<%= link_to 'View Users', controller: "usersubscriptions" %>
+	<%= link_to 'View List of All Available Series', controller: "series" %>
 </div>
-
 <!-- ============================================== -->
 <!-- render 'postpagecontent' -->

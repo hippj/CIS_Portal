@@ -1,0 +1,34 @@
+<!-- render 'prepagecontent' -->
+<!-- ============================================== -->	
+<p>
+  <h1><%= @usersubscription.username %></h1>
+</p>
+ 
+<p>
+  <strong>User:</strong>
+  <%= @usersubscription.username %>
+</p>
+ 
+<h2>Subscriptions</h2>
+<!-- render @usersubscription.subscription %>-->
+ 
+<div style="border-top: 1px solid grey;">
+	<!-- render "subscriptions/form" -->
+	<div class="teamH_buttonStyle">
+		<!-- link_to 'Add a New Subscription', new_usersubscription_subscription_event_path(@usersubscription) %> -->
+	</div>
+	<br>
+</div>
+
+<br> 
+<div style="border-top: 1px solid grey;">
+	<%= link_to 'Edit User', edit_usersubscription_path(@usersubscription) %> |
+	<%= link_to 'Delete User', usersubscription_path(@usersubscription), method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
+<br>
+<div style="border-top: 1px solid grey;">
+	<%= link_to 'Back to List of User Subscriptions', controller: "usersubscriptions" %>
+</div>
+
+<!-- ============================================== -->
+<!-- render 'postpagecontent' -->

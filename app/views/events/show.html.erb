@@ -1,0 +1,46 @@
+<!-- render 'prepagecontent' -->
+<!-- ============================================== -->	
+
+<div style="border-top: 1px solid grey;">
+
+<p>
+  <strong>Date:</strong>
+  <%= @event.date %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @event.category %>
+</p>
+
+<p>
+  <strong>Event Title:</strong>
+  <%= @event.title %>
+</p>
+ 
+<p>
+  <strong>Event Description:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Event Location:</strong>
+  <%= @event.location %>
+</p>
+
+</div>
+ 
+<p>
+	<span class="teamH_buttonStyle">
+		<%= link_to 'Edit Event', edit_series_event_path(@event.series, @event) %> | 
+		<%= link_to 'Delete Event', [@event.series, @event],
+			   method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+	</span>
+	<div style="border-top: 1px solid grey;">
+		<%= link_to 'Back to Series',  series_path(@event.series) %> | 
+		<%= link_to 'Back to Series List', controller: "series" %>
+	</div>
+</p>
+<!-- ============================================== -->
+<!-- render 'postpagecontent' -->

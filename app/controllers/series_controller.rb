@@ -46,6 +46,12 @@ class SeriesController < ApplicationController
 		redirect_to controller: "series" 
 	end
 	
+	#def addEvent
+	#	redirect_to controller: "events"
+	#	#@series = Series.find(params[:id])
+	#	#@series.events.create(params[:event].permit(:date, :category, :title, :description, :location))
+	#end
+	
 	private
 		def series_params
 			params.require(:series).permit(:title, :text)
